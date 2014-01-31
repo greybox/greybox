@@ -1,0 +1,237 @@
+/*---------------------------------------------------------------------------------------------------
+   Copyright (c) 2013 Intel Performance Learning Solutions Ltd, Intel Corporation.
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+---------------------------------------------------------------------------------------------------*/
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+    font-family: verdana, helvetica, arial, san-serif;
+    text-align: left;
+    font-size: 0.75em;
+}
+
+/* MAIN HEADER this styles the top header of the application*/
+#menubar {
+	overflow: hidden;
+	width: 98%;
+	background-color: #FFF;
+
+}
+
+#menubar-dropdowns {
+	background-color: #C6C6C6;
+	width: 100%;
+}
+
+#menubar-dropdowns {
+	margin-bottom: 20px;
+}
+
+.menubar-dropdown {
+	margin: 10px;
+}
+
+.menubar-first-dropdown {
+	margin-left: 30px;
+	margin-right: 10px;
+}
+
+.topnav-link {
+	float: right;
+    text-align:center;
+    font-size: 1.2em;    
+	line-height:25px;	
+    border: 1px solid #CCC;
+	background:#EEE;  
+	margin:10px 10px 0px 0px;    
+	min-width:120px;
+    cursor: default;
+}
+
+.topnav-link:hover, .topnav-selected{
+	background:#4D4A75; 
+	color:#FFF;
+	border: 1px solid #AAC; 
+}
+
+button {
+	width: 70px;
+	padding: 2px;
+	margin: 0px 2px;
+	font-size: 11px;
+}
+hr {	
+	color: #c0c0c0;
+	background-color: #c0c0c0;
+	border: 1;
+}
+/*  Floating Panels Style  */
+
+  
+.floatingWindow{
+	background-color: #FFFFFF;
+	border: 1px solid #CCC;
+	z-index: 99999999;
+	-webkit-box-shadow: 2px 2px 2px #aaa;
+	-moz-box-shadow: 2px 2px 2px #aaa;
+	box-shadow: 2px 2px 2px #aaa;
+	cursor: default;	
+}
+
+label{
+	padding-left:2px;
+	padding-right:2px;
+}
+.td-left{
+	text-align:left;
+}
+
+.td-right{
+	text-align:right;
+	
+}
+
+.td-bold
+{
+	font-weight: bold;
+}
+.td-padding{
+	padding:2px;
+}
+.ruleswizard{
+	font-weight: bold;
+	width:35%;
+}
+
+ul {
+	list-style: none;
+}
+.spacedList {padding:0.5em; line-height:2em}
+
+
+/* removes spinners from number specific text input fields*/
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.splashScreen {
+	z-index: 99999999999;
+	position: absolute;
+	width: auto;
+	height: auto;
+	background: #ffffff;
+	border: 1px;
+	border-style: solid;
+	border-color: #000000;
+	-webkit-box-shadow: 2px 2px 2px #aaa;
+	-moz-box-shadow: 2px 2px 2px #aaa;
+	box-shadow: 2px 2px 2px #aaa;
+	display: hidden;
+	width:800px;
+	height: 600px;
+}
+
+.sparkline-hover {
+	position: absolute;
+}
+
+/* sets the background and border of bullet graph */
+
+.bulletGraph {
+    background: #F0ECEC;
+    border: 1px solid #ccc;
+}
+
+/* sparkline-table is the popup table tha appears on rollover */
+
+.sparkline-table {
+    width: 260px;
+    background: #F0ECEC;
+    border: 1px solid #CCCCCC;
+}
+
+.sparkline-table-row {
+    height: 14px;
+    background: #F0ECEC;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.sparkline-table-bulletLegend {
+    width: 10px;
+    height: 10px;
+}
+
+.sparkline-table-breakline {
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.numberCell {
+    text-align: right;
+}
+
+
+#comment-display, #comment-entry {
+	background: #f0f000;
+	border: 1px;
+	border-style: solid;
+	border-color: #000000;
+	position: absolute;
+	width: auto;
+	height: auto;
+	padding: 5px;
+	z-index: 2;
+}
+
+#comment-entry {
+	height: auto;
+	width: auto;
+}
+
+.shadow {
+	-moz-box-shadow: 0 0 30px 5px #999;
+	-webkit-box-shadow: 0 0 30px 5px #999;
+}
+
+#comment-title {
+	font-weight: bold;
+}
+
+#comment-info {
+}
+
+#comment {
+	font-weight: bold;
+}
+
+#comment-next, #comment-prev {
+	color: blue;
+	text-decoration: underline;
+}
+
+#comment-input {
+	width: auto;
+}
+
+#comment-submit {
+	border: 1px solid #900;
+	background: transparent;
+	font-weight: bold;
+}

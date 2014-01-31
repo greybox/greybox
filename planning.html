@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<!--
+   ********************************************************************
+   Copyright (c) 2013 Intel Performance Learning Solutions Ltd, Intel Corporation.
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+   ******************************************************************** 
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>KAP - Run Plan</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/runplan.css" rel="stylesheet" type="text/css" />
+<link href="css/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="js/3rdparty/jquery.min.js"></script>
+<script type="text/javascript" src="js/3rdparty/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/3rdparty/jquery.sparkline.js"></script>
+<script type="text/javascript" src="js/3rdparty/date.js"></script>
+
+<script type="text/javascript" src="data/runplan-opt.js"></script>
+
+<script type="text/javascript" src="js/greybox/common.js"></script>
+<script type="text/javascript" src="js/greybox/data.js"></script>
+<script type="text/javascript" src="js/greybox/planning/planning-common.js"></script>
+<script type="text/javascript" src="js/greybox/planning/planning-feedback.js"></script>
+<script type="text/javascript" src="js/greybox/planning/planning-ppi-panel.js"></script>
+<script type="text/javascript" src="js/greybox/planning/planning-product-config.js"></script>
+<script type="text/javascript" src="js/greybox/planning/planning-product-panel.js"></script>
+<script type="text/javascript" src="js/greybox/planning/planning-rules-wizard.js"></script>
+<script type="text/javascript" src="js/greybox/planning/planning-rules.js"></script>
+<script type="text/javascript" src="js/greybox/planning/planning-tabs.js"></script>
+<script type="text/javascript" src="js/greybox/planning/planning-time-line.js"></script>
+<script type="text/javascript" src="js/greybox/planning/planning.js"></script>
+<script type="text/javascript" src="js/greybox/planning/runplan-context-menu.js"></script>
+<script type="text/javascript" src="js/greybox/planning/runplan.js"></script>
+<script type="text/javascript" src="js/greybox/planning/toolbar.js"></script>
+</head>
+<body>
+	<div id="main">
+		<script language="javascript">printNavMenu();</script>
+		<div id="planningScreenTabs" class="style-tabs">
+		  <ul>
+			<li><a href="#planningScreen-0">Committed</a></li>
+		  </ul>		
+		  
+		<div id="planningScreen-0" class="planningScreen">
+			<div id="leftMainPanel">
+				<div id="touchToolBar" class="touchToolBar">
+					<div id="viewSelection"  style="float:left;" >
+						<div id="runplanButton" title="Runplan View"  style=" clear:both; width: 80px; height: 22px; font-size: 1em; line-height: 24px;" class="toolbarButton runplanbuttonClass toolbarActiveButton toolbarRadioButton" data-groupName="view">
+							<div class="imageSwap"><img src="img/runplan.png" style="float:left;"/></div>
+							<span> Runplan</span>
+						</div>
+					</div>
+					<!-- DIVIDER--> 
+					<div  class="divider" ></div>
+					
+					<div id="calendarButtonContainer" style="float: left; " >
+						<div  id="calendarButton1"  class="toolbarButton tallToolbarButton calendarButton">
+							<div  class = "calendarHeader"  ></div>
+							<div class="startMonth" >JUNE</div>
+							<div class="startDay calendarDay" >1</div>
+							<div class="startShift"  >NIGHT</div>
+						</div>
+						
+						<div id="calendarButton2" class="toolbarButton tallToolbarButton calendarButton">
+							<div  class = "calendarHeader"  ></div>
+							<div class="endMonth" >JUNE</div>
+							<div class="endDay calendarDay" >7</div>
+							<div class="endShift">NIGHT</div>
+						</div>
+					</div>
+					
+					<div id="calendarPresetsContainer" style="float:left;">
+						
+						<div id="calendarButton" style=" clear:both; width: 110px; height: 22px;font-size: 1em; line-height: 24px;" class="toolbarButton selectWeekButton">
+							<img src="img/calendar.png" style="float:left;"/> 
+							<div class="datepicker"></div>
+							<span> Select Week</span>
+						</div>
+
+						<div id="bottomRow" style="clear:both" >		
+							<div title="Last week" id="selectButton" class="historyBackButton imageButton toolbarButton " style="background:url('img/back_hiLite.png') no-repeat;">
+								<a href = "#"><img src="img/back.png" alt="Previous Week" title="Select"/></a>
+							</div>						
+							<div title="Next week" class="imageButton toolbarButton historyForwardButton" style="background:url('img/forward_hiLite.png') no-repeat;">
+								<a href = "#"><img src="img/forward.png" alt="Next Week" title="Undo"  /></a>
+							</div> 
+						</div>
+					</div>
+					<!-- DIVIDER--> 
+					<div  class="divider" ></div>
+					
+					<div id="viewControlButtons" style="float: left">
+						<div id="topRow" >
+							<div id="selectButton" title="Select/Edit" class="imageButton toolbarButton runplan-arrow toolbarActiveButton toolbarRadioButton" data-groupName="selection" style="background:url('img/select_hiLite.png') no-repeat; ">
+								<a href = "#"><img src="img/select.png" alt="Select" title="Select"/></a>
+							</div>						
+							<div title="Undo" class="imageButton toolbarButton runplan-rule-undo" style="background:url('img/undo_hiLite.png') no-repeat;">
+								<a href = "#"><img src="img/undo.png" alt="Undo" title="Undo"  /></a>
+							</div>
+							<div title="Zoom In" class="imageButton toolbarButton runplan-zoomin" style="background:url('img/zoomIn_hiLite.png') no-repeat;">
+								<a href = "#"><img src="img/zoomIn.png" alt="Zoom In" title="Zoom In"  /></a>
+							</div>	
+							<div title="Increase Row Height" class="imageButton  toolbarButton runplan-increase-height" style="background:url('img/increaseHeight_hiLite.png') no-repeat; ">
+								<a href = "#"><img src="img/increaseHeight.png" alt="increase Height" title="increase Height"  /></a>
+							</div>
+						</div>
+						<div id="bottomRow"  >					
+							<div title="Pan" id="panButton" class="imageButton toolbarButton runplan-pan toolbarRadioButton" data-groupName="selection" style="background:url('img/pan_hiLite.png') no-repeat;">
+								<a href = "#"><img src="img/pan.png" alt="Pan" title="Pan"  /></a>						
+							</div>
+							<div title="Redo" class="imageButton toolbarButton runplan-rule-redo" style="background:url('img/redo_hiLite.png') no-repeat;">
+								<a href = "#"><img src="img/redo.png" alt="Redo" title="Redo" /></a>	
+							</div>
+							<div title="Zoom Out" class="imageButton toolbarButton runplan-zoomout" style="background:url('img/zoomOut_hiLite.png') no-repeat;">
+								<a href = "#"><img src="img/zoomOut.png" alt="Zoom Out" title="Zoom Out" /></a>						
+							</div>
+							<div title="Reduce Row Height" class="imageButton toolbarButton runplan-decrease-height" style="background:url('img/decreaseHeight_hiLite.png') no-repeat;">
+								<a href = "#"><img src="img/decreaseHeight.png" alt="decrease Height" title="decrease Height"  /></a>						
+							</div>
+						</div>
+					</div>
+					
+					<!-- DIVIDER--> 
+					<div  class="divider" ></div>
+					
+					<div id="colourBy" style="float:left;">
+						<div id="colourByState" style=" width: 120px; " class="toolbarButton textButton runplan-colour-by-state toolbarActiveButton toolbarRadioButton" data-groupName="colourBy">
+							Colour By State
+						</div>
+						<div id="colourByProduct" style="  width: 120px; " class="toolbarButton textButton runplan-colour-by-product toolbarRadioButton" data-groupName="colourBy">
+							Colour By Product
+						</div>
+					</div>
+					<div id="colourKey" class="toolbarButton tallToolbarButton">
+							<img src="img/colorKey.png"/>
+							<div >Colour Key</div>
+					</div>
+					
+					<div id="controlbuttons" style="float:right;">
+						<div id="cancelbutton" style=" width: 54px; height: 54px; text-align: center; " class = "toolbarButton cancelbuttonClass runplan-action-cancel toolbarButtonDisabled">
+								<a href = "#"  style=""><img src="img/cancel.png"/></a>
+								<div >Cancel</div>
+						</div>
+						<div id="editbutton" style=" width: 54px; height: 54px; text-align: center; " class = "toolbarButton editbuttonClass runplan-action-edit">
+								<img src="img/edit.png"/>
+								<div >Edit</div>
+						</div>
+						<div id="outputTargetbutton" style=" width: 54px; height: 54px; text-align: center; " class = "toolbarButton outputTargetbuttonClass runplan-action-outputTarget toolbarButtonDisabled">
+								<img src="img/commit.png"/>
+								<div >Commit</div>
+						</div>
+					</div>
+				</div>	
+				
+				<div id="runplan-tools" class="runplan-tools">
+					<div id="runplan-tool-header"> 
+					<!-- Individual Tool Labels are added by Javascript here -->
+					</div>
+				</div>
+
+				<div id="runplan-timeline" class="runplan-timeline timeline">
+					<div id="runplan-day-header" class="runplan-day-header day-header"></div>
+					<div id="runplan-time-header" class="runplan-time-header time-header"></div>
+					<div style="clear:both;"></div> 
+				</div>
+					
+				<div id="runplan-viewport" class="runplan-viewport viewport">
+					<div id="runplan-entries" class="runplan-entries entries">
+					</div>
+				</div>
+			</div>
+			<div style="clear: right;"></div>
+			<div id="rightPanel" style="float: left;">
+				<div class="runplan-work-week">Work Week <span class="workWeekNumber">1</span></div>
+				<div class="rightSidePanelHeader">Performance Indicator Forecast</div>
+				<div id="runplan-ppi" >
+					<div id="runplan-ppi-compare">
+						<div id="runplan-ppi-compare-text" style="float: left;">Compare to:</div>
+							<div style="float: right;">
+								<select class="runplan-ppi-compare-to" style="width:125px;"><option>none</option></select>
+							</div>
+						<div style="clear: right;"></div>
+					</div>
+					<div id="runplan-ppis">
+						<table width="260px">
+							<tr class="ppiRow"  id="outputRequiredPPI">
+								<td width="58%">Output Required</td>
+								<td width="18%" class="runplan-ppi-compare-value runplan-ppi-compare-outputRequired-value numberCell" id="runplan-ppi-outputRequired-no">-1</td>
+								<td class="runplan-ppi-compare-icon runplan-ppi-compare-outputRequired-icon runplan-ppi-decrease"></td>
+								<td width="18%" class="runplan-ppi-value runplan-ppi-outputRequired-no numberCell" id="runplan-ppi-outputRequired-no">5/6</td>
+							</tr>	
+							<tr class="ppiRow">
+								<td>Output</td>
+								<td class="runplan-ppi-compare-value runplan-ppi-compare-output-value numberCell">-756</td>
+								<td class="runplan-ppi-compare-icon runplan-ppi-compare-output-icon runplan-ppi-decrease"></td>
+								<td id="runplan-ppi-output-no" class="runplan-ppi-value runplan-ppi-output-no numberCell">30000</td>
+							</tr>		
+							<tr class="ppiRow">
+								<td>E-Utilization (%)</td>
+								<td class="runplan-ppi-compare-value runplan-ppi-compare-eutil-value numberCell"></td>
+								<td class="runplan-ppi-compare-icon runplan-ppi-compare-eutil-icon runplan-ppi-equals"></td>
+								<td class="runplan-ppi-value runplan-ppi-energy-util-no numberCell" id="runplan-ppi-energy-util-no">91.5</td>
+							</tr>		
+							<tr class="ppiRow">
+								<td>Energy Saved (kWh)</td>
+								<td class="runplan-ppi-compare-value runplan-ppi-compare-esaved-value numberCell">2000</td>
+								<td class="runplan-ppi-compare-icon runplan-ppi-compare-esaved-icon runplan-ppi-increase"></td>
+								<td id="runplan-ppi-energy-saved-no" class="runplan-ppi-value runplan-ppi-energy-saved-no numberCell">16123</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="runplan-output">
+					<div class="rightSidePanelHeader">
+						<div class="productConfigLabel" >Production Output</div>
+						<div class="productConfigButton" title="Configure Products">
+							<img  src="img/cog.png">
+						</div>
+						<div style="clear:both;"></div>
+					</div>
+
+					<table id="bulletTable" class="bulletTable" style="width:260px;">
+						<tr>
+							<td width="75px" >Product</td>
+							<td width="50px" >Goal</td>
+							<td width="125px" >Relative Output</td>
+						</tr>
+						<!-- product output table rows (including bullet graph) are inserted here by runplan.js -->
+					</table>				
+				</div>
+				<div id="runplan-0-rules" class="runplan-rules">
+					<div id="runplan-rules-header" class="rightSidePanelHeader">Rules <img style="float: right; visibility: hidden;" src="img/ruleconfig.png"></div>
+					<div style="clear: right;"></div>
+					<div id="runplan-0-rules-list" class="runplan-rules-list"></div>
+				</div>
+				<div class="runplan-developers">
+					<div class="rightSidePanelHeader">Notes</div>
+					<div style="clear: right;"></div>
+					This Demonstrator uses dummy data. Follow the developer guide to replace with your own data
+				</div>		
+			</div>		
+
+		<div style="clear: both;"></div>
+		</div><!--/planningScreen-->
+		</div><!--/planningScreenTabs-->
+
+	</div><!--/main-->
+	
+	<div id="dashboard-product-detail" style="display:none">
+		<span id="dashboard-product-detail-product"></span>
+		<table id="dashboard-product-detail-table">
+		</table>
+	</div>
+	
+	<div id="sparklinebox" class="sparkline-hover" style="display:none">
+        <table id="sparkline-table" class="sparkline-table">
+			<tbody></tbody>
+        </table>
+    </div>	
+	
+	<div id="partinfobox" style="display:none">
+		<table id="partinfobox-table">
+				<tr>
+					<td><img src="img/parta.png"/></td>
+					<td>Used</td>
+					<td id="usedPartCount"></td>
+				</tr>
+				<tr>
+					<td><img src="img/partb.png"/></td>
+					<td>Available</td>
+					<td id="availPartCount"></td>
+				</tr>
+		</table>
+	</div>
+	
+	<div id="comment-display" class="shadow" style="display:none">
+		<span id="comment-title">Comment</span><br/>
+		<span id="comment-info"></span><br/>
+		<span id="comment"></span><br/>
+		<span id="comment-prev" >prev</span>
+		<span id="comment-next" >next</span>		
+	</div>	
+	
+	<div id="comment-entry" class="shadow" style="display:none">
+		<input id="comment-input" type="text"/>
+		<input id="comment-submit" type="button" value="Enter"/>
+	</div>	
+	
+	<div id="contextMenu" class="floatingWindow" style="display:none" >
+		<div id="contextMenuHeader" class="floatingWindowHeader"> Change To </div>
+			<ul id="contextMenuItems" >
+				<li id="contextMenu-powersave" class="contextMenuItem">Powersave</li>
+				<li id="contextMenu-setup" class="contextMenuItem-setup">Setup</li>
+				<li id="contextMenu-engineering" class="contextMenuItem">Engineering</li>
+				<li id="contextMenu-Maintenance" class="contextMenuItem">Maintenance</li>
+				<li id="contextMenu-down" class="contextMenuItem">Down</li>	
+			</ul>
+	</div>
+		
+	<div id="contextMenu-setup-menu" style="display:none" class="floatingWindow">
+		 <ul id="contextMenu-setupList">
+		</ul> 
+	</div>
+	
+	<div id="runPlan-colorKey" class="floatingWindow">
+      <div id="runPlan-colorKey-handle">Colour Key 
+      <button width="20px" a="" href="#" id="closeButton">x</button></div>
+      <ul class="spacedList">
+      </ul>
+    </div>
+	
+	<div id="notificationBox">
+	</div>	
+	
+	<!--Rules Wizard pop up LM: April 2013-->
+	<div id="runPlan-RulesWizard"  class="floatingWindow" style="position: absolute; left: 35%; top: 30%; width: 375px; height:300px; background-color: #FFFFFF;" >
+      
+	  <div id="runPlan-RulesWizard-handle" class="floatingWindowHeader">User Defined Rule</div>
+	  <!--<form>-->
+	  
+			<table id="runplan-rulesWizard-table" border="0" >
+			
+			<!-- <tr><td colspan="2" id="runplan-rulesWizard-Comms"></td></tr> -->
+			
+			<tr>
+				<td class="td-right td-bold td-padding"><label>Target:</label></td>
+			    <td class="td-left td-padding">
+					<label>Equipment</label>
+					<input type="radio" name="wizard-equipment" checked  value="runplan"/>
+					<label>Product</label>
+					<input type="radio"  disabled name="wizard-product" value="set-ups"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<td class="td-right td-bold td-padding"><label>Tool:</label></td>
+				<td id="runplan-rulesWizard-Tool" class="td-left td-padding"></td>
+			</tr>
+			
+			<tr>
+				<td class="td-right td-bold td-padding"><label>State:</label></td>
+				<td id="runplan-rulesWizard-Set" class="td-left td-padding" ></td>
+			</tr>
+			
+			<tr id="RulesProduct">
+				<td class="td-right td-bold td-padding"><label>Product:</label></td>
+				<td id="runplan-rulesWizard-Product" class="td-left td-padding"></td>
+			</tr>
+			
+			<tr>
+				<td class="td-right td-bold td-padding"><label>From:</label></td>
+				<td id="runplan-rulesWizard-From" class="td-left td-padding" ></td>
+			</tr>
+			<tr>
+				<td class="td-right td-bold td-padding"><label>To:</label></td>
+				<td id="runplan-rulesWizard-To" class="td-left td-padding"></td>
+			</tr>
+
+			<tr>
+				<td class="td-right td-bold td-padding"><label> Last Edited By:</label></td>
+				<td id="RulesEdit" class="td-left td-padding"></td>
+			</tr>
+			
+			<tr>
+				<td class="td-right td-bold td-padding"><label>Owner: </label></td>
+				<td id="RulesOwner" class="td-left td-padding"></td>
+			</tr>
+	
+			<tr>
+				<td colspan="2" align="right" >
+					<button id="runplan-rulesWizard-Delete">Delete</button>
+					<button id="runplan-rulesWizard-Cancel">Cancel</button>
+				</td>
+			</tr>
+			</table>			 
+		<!--</form>-->
+    </div>
+	
+	<div id="runPlan-feedback-box">
+		<div id="runplan-feedback-header" class="runplan-panel-header">Feedback Form</div>
+		<table id="runplan-feedback-table">
+		 <tr>
+		  <td>Name: </td><td><input id="runPlan-feedback-name" type="text"/></td>
+		 </tr>
+		 <tr>
+		  <td>Date Time: </td><td><script> var d = new Date(); var date = d.getHours() + ':' + d.getMinutes() + ' ' + d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear(); document.write(date); </script></td>
+		 </tr>
+		</table>
+		<textarea id="runPlan-feedback-text">Please provide feedback on this application. Please be as detailed as possible.</textarea>
+		<button id="runPlan-feedback-submit">Submit Feedback</button>
+	</div>
+	
+	<div class="runPlanProductConfiguration floatingWindow">
+		<div class="runPlanProductConfigurationHeader">Product Configuration</div>
+		<div class="runPlanProductConfigurationProductList">
+			<table class="runPlanProductConfigurationTable">
+				<thead>
+					<tr>
+					 <td style="text-align: left;">Product</td>
+					 <td style="text-align: center;">Lower Limit</td>
+					 <td style="text-align: center;">Meet</td>
+					 <td style="text-align: center;">Upper Limit</td>
+					 <td style="text-align: right;">Target</td>
+					 <td style="text-align: right;">Offset</td>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+			<button class="runPlanProductConfigurationApply" style="float:right;">Apply</button>
+			<button class="runPlanProductConfigurationCancel" style="float:right;">Cancel</button>
+			<div style="clear: both;"></div>
+		</div>
+	</div>
+</body>
+</html>

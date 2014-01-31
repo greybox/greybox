@@ -1,0 +1,826 @@
+/*---------------------------------------------------------------------------------------------------
+   Copyright (c) 2013 Intel Performance Learning Solutions Ltd, Intel Corporation.
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+---------------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------
+[Table of contents]
+1. Sandbox (code in progress)
+2. Body
+3. Version Tabs 
+4. Left Main Panel
+4.1 Control Bar
+4.2 GUIToolbar 
+4.3 Toollist
+4.4 Viewport 
+4.4.1 Timeline
+4.4.2 RunPlan Entries
+4.4.3 Toolstate styles 
+4.4.4 Context menu
+
+5. Right Side Panel 
+5.1 PPI panel
+5.2 Output
+5.3 Rules
+5.4 Tasks
+5.5 Optimisation history 
+5.6 Feedback  
+5.7 Notifications 
+
+-------------------------------------------------------------------*/
+/* 1. Sandbox (code in progress) */
+/* 2. Body */
+
+body {
+	background-color: #ffffff;
+}
+
+.planningPanelBorder{
+	border: 1px solid #c0c0c0;
+	margin-top: 10px;
+	padding: 5px;
+}
+
+.historyHighlight {
+	opacity: 0.3;
+	background: #ffffff;
+	position: absolute;
+	border-right: 1px solid #444444;
+	pointer-events: none;
+	z-index: 99999;
+}
+
+.nextWeekHighlight {
+	opacity: 0.2;
+	background: #ffffff;
+	position: relative;
+	border-left: 1px solid #444444;
+	z-index: 99999;
+}
+
+/* 3. Version Tabs   */
+
+.ui-tabs {
+	padding: 0 !important; /* override default padding value to 0 */
+}
+
+#planningScreenTabs { 
+    background: transparent; 
+    border: none; 
+    margin: 0px;
+    padding:0px;
+} 
+
+.ui-tabs-nav.ui-widget-header { 
+    background: #B3B3B3;
+    border: none; 
+    border-bottom: 1px solid #c0c0c0; 
+    -moz-border-radius: 0px; 
+    -webkit-border-radius: 0px; 
+    border-radius: 0px; 
+    
+}
+
+/* 4. Left Main Panel */
+
+#leftMainPanel {
+    float: left;
+    width: 70%;
+}
+
+/* 4.1 Control Bar */
+
+.touchToolBar {
+	float:left; 
+	width:100%;
+	margin-bottom: 15px;
+}
+
+.toolbarButtonDisabled {
+	color: #c0c0c0;
+	background:#f0f0f0;
+}
+
+.runplanButtonHover {
+	color:#FFF;
+	background:#4D4A75 url("../img/runplan_hiLite.png") no-repeat left top !important;
+}
+.runplanButtonHover img{
+  visibility:hidden;
+}
+
+.calendarButton {
+	color:#000 !important;
+	background:#f0f0f0 !important;
+}
+
+.panButtonHover {
+	background:url('img/pan_hiLite.png') no-repeat;
+}
+
+.panButtonHover img {
+	visibility:hidden;
+}
+
+.selectButtonHover {
+	background:url('img/select_hiLite.png') no-repeat;
+}
+
+.selectButtonHover img {
+	visibility:hidden;
+}
+
+.colourByStateHover, .colourByProductHover  {
+	background:#4D4A75 !important; 
+	color:#FFF;
+	border: 1px solid #AAC; 
+}
+
+.cancelbuttonClass:hover{
+	background:#4D4A75 url("../img/cancel_hiLite.png") no-repeat center top;
+}
+.cancelbuttonClass:hover  img{
+  visibility:hidden;
+}
+
+.editbuttonClass:hover{
+	background:#4D4A75 url("../img/edit_hiLite.png") no-repeat center top;
+}
+.editbuttonClass:hover  img{
+  visibility:hidden;
+}
+.optimisebuttonClass:hover{
+	background:#4D4A75 url("../img/optimise_hiLite.png") no-repeat center top;
+}
+.optimisebuttonClass:hover  img{
+  visibility:hidden;
+}
+.outputTargetbuttonClass:hover{
+	background:#4D4A75 url("../img/outputTarget_hiLite.png") no-repeat center top;
+}
+.outputTargetbuttonClass:hover  img{
+  visibility:hidden;
+}
+
+.calendarHeader {
+	height: 10px; 
+	background:url('../img/calendarHeader.png') no-repeat;
+}	
+
+.calendarDay {
+	font-size: 1.7em;
+}
+
+.toolbarButton {	
+	float: left;
+	border: 1px solid #CCC;
+	background:#EEE;  
+	margin:8px 0px 0px 8px;
+}
+
+.toolbarButtonHover {
+	color:#FFF;
+	background:#4D4A75;
+}
+
+.tallToolbarButton {
+	float: left; 
+	width: 40px; 
+	height: 54px; 
+	text-align: center; 
+	font-size: 0.8em;
+}
+
+.tallToolbarButtonHover {
+	background:#4D4A75;
+}
+
+.historyForwardButton {
+	margin-left: 18px !important;
+}
+
+.divider {
+	float:left; 
+	width: 1px; 
+	height: 56px; 
+	margin:8px 0px 0px 8px; 
+	border-right: 1px solid #CCC;
+}
+.imageButton {
+	margin:8px 0px 0px 8px;
+	float:left;	
+    height:22px;
+}
+.imageButton:hover img{
+  visibility:hidden;
+}
+
+.textButton {
+	height: 22px; 
+	font-size: 1em; 
+	line-height:22px;
+	padding:0px 0px 0px 8px;
+	clear:both; 
+	min-width:80px;
+	 
+}
+.textButtonHover {
+	background:#4D4A75; 
+	color:#FFF;
+	border: 1px solid #AAC; 
+}
+
+.controlbutton {
+	margin:0;
+	padding: 8px 0px 0px 8px;
+}
+
+.datepicker {
+	z-index: 10000;
+	position: absolute;
+}
+
+/* 4.2 GUI ToolBar */
+.pan-cursor {
+	cursor: url(cursor/pan.cur), pointer !important;
+	}
+	
+#runPlan-colorKey { 
+	width: 150px;
+	left: 80%;
+	top:12%;
+	position: fixed;
+	}
+
+#runPlan-colorKey-handle { 
+	border-bottom: 1px solid #CCC; 
+	padding:0.25em; 
+	font-weight:bold; 
+	cursor:move; 
+	}
+  
+#closeButton {
+	padding:0px 4px -0px; 
+	float:right; 
+	font-size:0.9em; 
+	border: 1px solid #AAA;
+	width:20px;
+	}
+
+/* 4.3 Toollist */
+#runplan-tool-header {
+	border-bottom: 1px solid #c0c0c0; 
+}
+
+#runplan-tools {
+/*	margin-top: 10px;*/
+	float: left;
+	clear: left;
+	height: 645px;
+	overflow: hidden;
+}
+
+.runplan-tool {
+	width: auto;
+	height: 100%;
+	border-bottom: 1px solid #c0c0c0;
+	border-left: 1px solid #c0c0c0;
+	background: #ffffff;
+}
+
+.runplanToolHighlight {
+	background: #f0f0f0 !important;
+}
+
+/* 4.4 Viewport */
+.viewport {
+	overflow-x: auto;
+	overflow-y: auto;
+	border-right: 1px solid #c0c0c0;
+	background-color: #ffffff;
+	border-left: 1px solid #c0c0c0;
+	margin-top: 10px;
+	position: relative;
+}
+
+.runplan-viewport {
+	height: 515px;
+}
+
+/* 4.4.1 Timeline */
+.timeline {
+	overflow: hidden;
+	border-right: 1px solid #c0c0c0;
+	background-color: #ffffff;
+	border-left: 1px solid #c0c0c0;
+	border-bottom: 1px solid #c0c0c0;
+	/* position: relative; */
+	width: auto;
+	float: left;
+}
+
+#runplan-day-header, #runplan-time-header, .day-header, .time-header {
+	height: 100%;
+	background: #ffffff;
+	border-bottom: 1px solid #c0c0c0;
+	white-space: nowrap;
+	overflow: hidden;
+	float: left;
+}
+
+#runplan-day-header, .day-header {
+	background-color: #ffffff;
+	border-right: 1px solid #c0c0c0;
+	border-top: 1px solid #c0c0c0;
+	text-align: left;
+	font-weight: bold;
+	
+}
+
+#runplan-day-header:after, .day-header:after {
+	clear: both;
+}
+
+
+/* styles individual time segments on timeline */
+.runplan-time, .runplan-time-even , .runplan-day-shift, .runplan-night-shift {
+	display: inline-block;
+	background: #ffffff;
+	height: 100%;
+	font-size: 1em;
+	line-height: 2em;
+	text-align: center;
+	border-right: 1px solid #c0c0c0;	
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.runplan-header-day {
+	display: inline-block;
+	background: #ffffff;
+	height: 100%;
+	font-size: 1em;
+	line-height: 2em;
+	text-align: left;
+	border-right: 1px solid #c0c0c0;	
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+
+/* 4.4.2 RunPlan Entries */
+/* styles runplan area*/
+#runplan-entries, .entries {
+	white-space: nowrap;
+	background-color: #ffffff;
+	width: auto;
+	overflow: hidden;
+	float: left;
+}
+
+/* styles each line in the runplan */
+.runplan-entry {
+	position: relative;
+	width: 100%;
+	background: #FFD731;
+	border-top: 6px solid white;
+	border-bottom: 1px solid #c0c0c0;
+}
+
+/* styles each block in a line */
+.runplan-task {
+	white-space: nowrap;
+	overflow: hidden;
+	border-left: 2px solid #FFF;
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+	color: #333;
+}
+
+.runplanTaskHighlight {
+	background-color: #f0f0f0 !important;
+}
+
+/* don't show caret over text */
+.runplan-task span, .runplan-tool, #runplan-day-header span, #runplan-time-header span {
+	cursor: default;
+}
+
+.runplan-task:hover {
+	color: #000;
+}
+
+.runplan-task span {
+	display: inline-block;
+	padding-left: 7px;
+	padding-right: 4px;	
+}
+
+
+.ui-draggable:hover {
+	color: #0;
+	box-shadow:inset 0px -1px 6px 3px rgba(150,150,150,0.6);
+	cursor: move;
+}
+
+.ui-draggable span:hover {
+	cursor: move;
+}
+
+.ui-resizable-w {
+	left: 0px !important;
+	background-image:url('../img/resizeGripper.png');	
+	cursor: E-resize;
+	opacity: 0.55;
+	width: 5px !important;
+}
+
+.ui-resizable-e{
+	right: 0px !important;
+	background-image:url('../img/resizeGripper.png');	
+	cursor: E-resize;
+	opacity: 0.55;
+	width: 5px !important;
+}
+
+.ui-resizable-handle {
+	width: 1px;
+}
+
+/* 4.4.3 Toolstate styles */
+
+.Default-Setup {
+	background: #474242;
+}
+
+.Setup {
+	background: #9CA4D4;
+}
+
+.Product,.Run {
+	background: #BCD3C0;
+}
+
+.Idle {
+	background: #FCD636;
+}
+
+.Powersave {
+	background: #99C855;
+}
+
+.Maintenance {
+	background: #C7C7E5;
+}
+
+.Engineering {
+	background: #E6E6F4;
+	background-color: #E6E6F4;
+}
+
+.Down {
+	background: #FFA99D;
+}
+
+.MissingHistory {
+	background: #000000;
+}
+
+.UP {
+	background: #fdfdfd;
+}
+
+.crosshatch {
+	background-image:url('../img/crosshatch.png');
+	background-repeat:repeat-x;
+}
+
+.dynamicConstraint {
+	background-image:url('../img/dynamic_constraint.png');
+	background-repeat:repeat-x;	
+}
+
+.dynamicConstraint span{
+	font-family: 'Comic Sans MS', cursive, sans-serif;
+	font-style: italic;
+	display: inline-block;
+	padding-left: 7px;
+	padding-right: 4px;
+}
+/* .History class is applied to any historic runplan block to disable interaction
+i.e. the greyed out blocks in the past*/ 
+.History {
+}
+
+.InProgress {
+}
+
+
+/* TURN INTO A SINGLE STYLE APPLIED TO CONTEXT MENUS*/
+#contextMenu, #contextMenu-setup-menu   {
+	width: auto;
+	height: auto;
+	position: absolute;	
+}
+
+.contextMenu{
+	width: auto;
+	height: auto;
+	position: absolute;	
+	padding:2px;
+	padding-left:5px;
+	padding-right:5px;
+	cursor: default;
+	
+}
+
+.floatingWindowHeader{
+	border-bottom: 1px solid #CCC; 
+	padding:0.25em; 
+	font-weight:bold; 
+}
+
+/*DEFINE A SINGLE STYLE FOR GENERIC HOVER STYLES (E.G. BACKGROUND) AND SPLIT OUT EMPTY STYLES FOR DYNAMIC JS EVENT HANDLING */
+.contextMenuItem-setup, .contextMenuItem {
+	padding:2px;
+	padding-left:5px;
+	padding-right:5px;
+	cursor: default;
+	list-style:none;
+}
+
+/*DEFINE A SINGLE STYLE FOR GENERIC HOVER STYLES (E.G. BACKGROUND) AND SPLIT OUT EMPTY STYLES FOR DYNAMIC JS EVENT HANDLING */
+.contextMenuItem:hover {
+	background:#ccc;
+}
+
+.contextMenuItem-setup:hover {
+	background:#ccc;
+}
+
+.contextMenu-setupList{
+	list-style:none;
+}
+
+/* 5. Right Side Panel  */
+
+
+/*DEFINE A  .rightSidePanels and .rightSidePanelHeader styles for the following two class groups. Use planningPanel border from above*/
+#rightPanel {
+    float: left;
+    border-left: 1px solid #c0c0c0;
+    padding-left: 10px;
+    width: 260px;
+	margin: 0;
+    margin-left: 10px;
+
+}
+
+#runplan-ppi, .runplan-rules, #runplan-tasks, #runplan-history, #runplan-output {
+	/* border: 1px solid #c0c0c0; */
+	/* margin: 8x; */
+	height: 136px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	width: 100%; 
+    margin-bottom:20px;
+    
+}
+
+#runplan-output {
+	height: auto;
+}
+
+.runplan-work-week {
+    margin-top: 10px;
+    font-size: 32px;
+}
+
+.ppi-h1 {
+    font-size: 14px;
+}
+
+ #runplan-rules-header, #runplan-tasks-header, #runplan-history-header{
+	border-bottom: 1px solid #c0c0c0;
+	font-weight: strong;
+}
+
+.rightSidePanelHeader {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #c0c0c0;
+}
+
+/* 5.1 PPI panel */
+.ppiRow{
+    height:18px;
+}
+.runplan-ppi-bar {
+	width: 100%;
+	height: 10px;
+	border: 1px solid #c0c0c0;
+}
+
+.runplan-ppi-bar-fill {
+	height: 10px;
+	background-color: #000000;
+	float: left;
+}
+
+.runplan-ppi-compare-icon {
+	width: 13px;
+	height: 14px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.runplan-ppi-increase {
+	background: url('../img/arrow_up.png') no-repeat;
+}
+
+.runplan-ppi-decrease {
+	background: url('../img/arrow_Down.png') no-repeat;
+}
+
+.runplan-ppi-equals {
+	background: url('../img/equals.png') no-repeat;
+}
+
+.runplan-ppi-opt-needed {
+	background: #c0c0c0 !important;
+}
+
+.runplan-ppi-text-opt-needed {
+	color: #c0c0c0 !important;
+}
+
+#runplan-ppi-compare {
+    margin-top: 5px;
+    width: 250px;
+    padding: 5px;
+    background: #F0ECEC;
+    border: 1px solid #ccc;
+    height: 25px;
+    line-height: 25px;
+    vertical-align: middle;
+}
+
+.imageMiddle {
+    display: inline;
+    vertical-align: middle;
+}
+
+/* 5.2 Output */
+
+
+#runplan-output{
+    
+
+}
+
+
+.productConfigLabel{
+    float:left;
+    line-height:20px;
+    vertical-align:20px;
+
+}
+
+.productConfigButton{
+    width:20px;
+    height:20px;
+    float: right;
+	border: 1px solid #CCC;
+	background:#EEE;  
+	
+}
+
+.productConfigButton:hover{
+  
+    color:#FFF;
+	background:#aac    ;
+}
+
+.runPlanProductConfiguration {
+	position: absolute; 
+	left: 35%; 
+	top: 30%; 
+	width: auto;
+	height: auto;
+	background-color: #FFFFFF;
+	display: none;
+	-moz-border-radius: 10px;
+	border-radius: 10px;	
+}
+
+.runPlanProductConfigurationHeader {
+	font-weight: bold;
+	padding: 5px;
+}
+
+.runPlanProductConfigurationProductList {
+	border: 1px solid #c0c0c0;
+	padding: 10px;
+	padding-bottom: 15px;
+	padding-right: 15px;
+	margin: 5px;
+}
+
+.runPlanProductConfigurationTable {
+	padding-bottom: 15px;
+}
+
+.runPlanProductConfigurationTable td {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.runPlanProductConfigurationTable thead td {
+	font-weight: bold;
+}
+
+.runplan-output-row {
+    height: 22px;
+    padding: 2px;
+    cursor: default;
+}
+
+/* 5.3 Rules */
+.runplan-rules {
+	position: relative;
+	overflow-y: hidden;
+}
+
+.runplan-rules-list {
+	height: 85%;
+	overflow-y: auto;
+	position:relative;
+}
+
+/* 5.4 Tasks */
+/* 5.5 Optimisation history  */
+/* 5.6 Feedback  */
+#runplan-feedback-header {
+	border-bottom: 1px solid #ccc;
+	font-weight: bold;
+	padding: 3px;
+	padding-left: 5px;
+}
+
+#runplan-feedback-table {
+	margin-left: 5%;
+	margin-top: 1%;
+}
+
+#runPlan-feedback-box {
+	position: absolute;
+	height: 100%;
+	background: #ffffff;
+	border: 1px solid #ccc;
+}
+
+#runPlan-feedback-text {
+	background: #ffff00;
+	width: 90%;
+	height: 70%;
+	margin: 5%;
+}
+
+#runPlan-feedback-submit {
+	width: 40%;
+	height: 5%;
+	margin-left: 30%;
+}
+
+/* 5.7 Notifications */
+#notificationBox {
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;	
+	padding: 10px;
+	width: 250px;
+	height: auto;
+	border: 1px solid #000000;
+	position: absolute;
+	background: #FFFF66;
+	color: #000000;
+	font-weight: bold;
+	z-index: 10000000;
+	display: none;
+}
