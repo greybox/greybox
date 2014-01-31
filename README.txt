@@ -8,10 +8,10 @@ Contact
 If you would are interested in adopting the system for your own use-case or in technical aspects 
 of the project please contact:
 
-Connor Upton | Intel Labs Europe | connor.upton@intel.com
-Fergus Quilligan | Intel/ICMR | fergus.quilligan@icmr.com
-Michael Dowling | Intel Labs Europe | michaelx.dowling@intel.com
-Fearghal O'Hare | Intel/ICMR | fearghal.o'hare@intel.com
+Connor Upton | Intel Labs Europe | connor.upton at intel.com
+Fergus Quilligan | Intel/ICMR | fergus.quilligan at icmr.com
+Michael Dowling | Intel Labs Europe | michaelx.dowling at intel.com
+Fearghal O'Hare | Intel/ICMR | fearghal.o'hare at intel.com
 
 
 Credits
